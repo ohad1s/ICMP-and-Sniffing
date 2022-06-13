@@ -1,0 +1,21 @@
+.PHONY = all clean
+CC = gcc
+OBJ = myping.o sniffer.o
+NAME = myping sniffer
+CFLAGS = -Wall -Werror -g
+
+all : $(NAME)
+
+myping: myping.o
+	$(CC) myping.o -o myping
+sniffer: sniffer.o
+	$(CC) sniffer.o -o sniffer
+myping.o: myping.c
+	$(CC) $(CFLAGS) -c myping.c
+sniffer.o: sniffer.c
+	$(CC) $(CFLAGS) -c sniffer.c
+
+.PHONY: all clean
+
+clean:
+	rm -f *.o *.a myping sniffer
